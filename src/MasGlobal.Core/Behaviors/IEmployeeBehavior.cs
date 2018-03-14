@@ -9,5 +9,7 @@ namespace MasGlobal.Core.Behaviors
     public interface IEmployeeBehavior
     {
         Task<List<EmployeeDTO>> GetAllAsync();
+
+        Task<List<EmployeeDTO>> GetByIdAsync(int Id);
     }
 }

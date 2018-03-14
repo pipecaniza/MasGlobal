@@ -3,6 +3,7 @@ using MasGlobal.Core.DTOs;
 using MasGlobal.Core.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,6 +32,12 @@ namespace MasGlobal.Core.Behaviors
             }
 
             return employeeDTOs;           
+        }
+
+        public async Task<List<EmployeeDTO>> GetByIdAsync(int Id)
+        {
+            var employees =  await GetAllAsync();
+            return employees.Where(e => e.Id == Id).ToList();
         }
     }
 }

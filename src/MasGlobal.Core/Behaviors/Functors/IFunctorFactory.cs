@@ -8,6 +8,6 @@ namespace MasGlobal.Core.Behaviors.Functors
     {
         void BindFunctor(Type entityType, Type functorType);
 
-        IFunctor<T> GetFunctor<T>(T entity) where T : class;
+        IFunctor GetFunctor(object entity);
     }
 }

@@ -19,8 +19,8 @@ namespace MasGlobal.Core.Models
 
         public string RoleDescription { get; set; }
 
-        public int HourlySalary { get; set; }
+        public decimal HourlySalary { get; set; }
 
-        public int MonthlySalary { get; set; }
+        public decimal MonthlySalary { get; set; }
     }
 }

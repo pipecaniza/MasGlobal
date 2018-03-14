@@ -5,11 +5,16 @@ using System.Text;
 
 namespace MasGlobal.Core.Behaviors.Functors
 {
-    public class HourlySalaryFunctor : IFunctor<HourlySalaryEmployeeDTO>
+    public class HourlySalaryFunctor : IFunctor
     {
-        public void Execute(HourlySalaryEmployeeDTO entity)
+        public void Execute(object entity)
         {
-            entity.AnnualSalary = 120 * entity.HourlySalary * 12;
+            var entityCasted = entity as HourlySalaryEmployeeDTO;
+            if (entityCasted == null)
+            {
+                throw new Exception("Unable to cast");
+            }
+            entityCasted.AnnualSalary = 120 * entityCasted.HourlySalary * 12;
         }
     }
 }

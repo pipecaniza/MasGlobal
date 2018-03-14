@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MasGlobal.Core.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace MasGlobal.Core.Behaviors.Functors
 {
-    public class FunctorFactory
+    public class FunctorFactory : IFunctorFactory
     {
         private Dictionary<Type, Type> Table;
 
@@ -28,19 +29,22 @@ namespace MasGlobal.Core.Behaviors.Functors
             Table.Add(entityType, functorType);
         }
 
-        public IFunctor<T> GetFunctor<T>(T entity)
-            where T : class
+        public IFunctor GetFunctor(object entity)
         {
-            var typeofEntity = typeof(T);
+            var typeofEntity = entity.GetType();
             if (!Table.ContainsKey(typeofEntity))
             {
                 throw new Exception("The entity doesn't have any functor assigned");
             }
 
             var functorType = Table[typeofEntity];
-            Type[] typeArgs = { typeof(T) };
-            var genericType = functorType.MakeGenericType(typeArgs);
-            return (IFunctor<T>)Activator.CreateInstance(genericType);
+            if (functorType.IsGenericType)
+            {
+                Type[] typeArgs = { entity.GetType() };
+                var genericType = functorType.MakeGenericType(typeArgs);
+                return (IFunctor)Activator.CreateInstance(genericType);
+            }
+            return (IFunctor)Activator.CreateInstance(functorType);
         }
     }
 }

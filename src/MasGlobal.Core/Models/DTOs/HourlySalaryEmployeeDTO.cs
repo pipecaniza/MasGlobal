@@ -6,10 +6,10 @@ namespace MasGlobal.Core.DTOs
 {
     public class HourlySalaryEmployeeDTO : EmployeeDTO
     {
-        public int HourlySalary { get; set; }
+        public decimal HourlySalary { get; set; }
 
         public HourlySalaryEmployeeDTO(int id, string name, string contractTypeName,
-            int roleId, string roleName, string roleDescription, int hourlySalary)
+            int roleId, string roleName, string roleDescription, decimal hourlySalary)
             : base(id, name, contractTypeName, roleId, roleName, roleDescription)
         {
             HourlySalary = hourlySalary;

@@ -15,7 +15,7 @@ namespace MasGlobal.Core.Helpers
                 case Global.HourlySalaryName:                    
                     return new HourlySalaryEmployeeDTO(employee.Id, employee.Name, 
                         employee.ContractTypeName, employee.RoleId, employee.RoleName, 
-                        employee.RoleDescription, employee.MonthlySalary);
+                        employee.RoleDescription, employee.HourlySalary);
 
                 case Global.MonthlySalaryName:
                     return new MonthlySalaryEmployeeDTO(employee.Id, employee.Name,

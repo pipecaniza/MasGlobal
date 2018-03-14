@@ -4,8 +4,8 @@ using System.Text;
 
 namespace MasGlobal.Core.Behaviors.Functors
 {
-    public interface IFunctor<T> where T : class
+    public interface IFunctor
     {
-        void Execute(T entity);
+        void Execute(object entity);
     }
 }

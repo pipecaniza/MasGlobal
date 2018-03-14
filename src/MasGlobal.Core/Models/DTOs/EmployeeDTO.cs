@@ -18,7 +18,7 @@ namespace MasGlobal.Core.DTOs
 
         public string RoleDescription { get; set; }
 
-        public int AnnualSalary { get; set; }
+        public decimal AnnualSalary { get; set; }
 
         public EmployeeDTO(int id, string name, string contractTypeName,
             int roleId, string roleName, string roleDescription)
