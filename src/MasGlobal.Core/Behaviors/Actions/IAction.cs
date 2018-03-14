@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MasGlobal.Core.Behaviors.Functors
+namespace MasGlobal.Core.Behaviors.Actions
 {
-    public interface IFunctor
+    public interface IAction
     {
         void Execute(object entity);
     }

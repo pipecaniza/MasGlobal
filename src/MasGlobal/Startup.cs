@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MasGlobal.Core.Behaviors;
-using MasGlobal.Core.Behaviors.Functors;
+using MasGlobal.Core.Behaviors.Actions;
 using MasGlobal.Core.DTOs;
 using MasGlobal.Core.Models;
 using MasGlobal.Core.Services;
@@ -28,7 +28,7 @@ namespace MasGlobal
         {
             services.AddMvc();
 
-            services.AddSingleton(typeof(IFunctorFactory), typeof(FunctorFactory));
+            services.AddSingleton(typeof(IActionFactory), typeof(ActionFactory));
 
             services.AddScoped(typeof(IEmployeeService), typeof(EmployeeService));
             services.AddScoped(typeof(IEmployeeBehavior), typeof(EmployeeBehavior));
@@ -39,9 +39,9 @@ namespace MasGlobal
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            var functorFactory = app.ApplicationServices.GetService<IFunctorFactory>();
-            functorFactory.BindFunctor(typeof(HourlySalaryEmployeeDTO), typeof(HourlySalaryFunctor));
-            functorFactory.BindFunctor(typeof(MonthlySalaryEmployeeDTO), typeof(MonthlySalaryFunctor));
+            var actionFactory = app.ApplicationServices.GetService<IActionFactory>();
+            actionFactory.BindAction(typeof(HourlySalaryEmployeeDTO), typeof(HourlySalaryAction));
+            actionFactory.BindAction(typeof(MonthlySalaryEmployeeDTO), typeof(MonthlySalaryAction));
 
 
             if (env.IsDevelopment())

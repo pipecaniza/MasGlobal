@@ -1,4 +1,4 @@
-﻿using MasGlobal.Core.Behaviors.Functors;
+﻿using MasGlobal.Core.Behaviors.Actions;
 using MasGlobal.Core.DTOs;
 using MasGlobal.Core.Services;
 using System;
@@ -12,10 +12,10 @@ namespace MasGlobal.Core.Behaviors
     public class EmployeeBehavior : IEmployeeBehavior
     {
         protected readonly IEmployeeService _service;
-        protected readonly IFunctorFactory _factory;
+        protected readonly IActionFactory _factory;
 
         public EmployeeBehavior(IEmployeeService service,
-            IFunctorFactory factory)
+            IActionFactory factory)
         {
             _service = service;
             _factory = factory;
@@ -27,8 +27,8 @@ namespace MasGlobal.Core.Behaviors
 
             foreach (var employeeDTO in employeeDTOs)
             {
-                var functor = _factory.GetFunctor(employeeDTO);
-                functor.Execute(employeeDTO);
+                var action = _factory.GetAction(employeeDTO);
+                action.Execute(employeeDTO);
             }
 
             return employeeDTOs;           

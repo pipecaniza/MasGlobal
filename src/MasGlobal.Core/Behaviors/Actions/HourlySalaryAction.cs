@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MasGlobal.Core.Behaviors.Functors
+namespace MasGlobal.Core.Behaviors.Actions
 {
-    public class HourlySalaryFunctor : IFunctor
+    public class HourlySalaryAction : IAction
     {
         public void Execute(object entity)
         {

@@ -1,5 +1,5 @@
 ﻿using MasGlobal.Core.Behaviors;
-using MasGlobal.Core.Behaviors.Functors;
+using MasGlobal.Core.Behaviors.Actions;
 using MasGlobal.Core.DTOs;
 using MasGlobal.Core.Services;
 using Moq;
@@ -13,10 +13,10 @@ namespace MasGlobal.Tests.Behaviors
 {
     public class EmployeeBehaviorTests
     {
-        private static void BindBasicFunctors(IFunctorFactory factory)
+        private static void BindBasicActions(IActionFactory factory)
         {
-            factory.BindFunctor(typeof(HourlySalaryEmployeeDTO), typeof(HourlySalaryFunctor));
-            factory.BindFunctor(typeof(MonthlySalaryEmployeeDTO), typeof(MonthlySalaryFunctor));
+            factory.BindAction(typeof(HourlySalaryEmployeeDTO), typeof(HourlySalaryAction));
+            factory.BindAction(typeof(MonthlySalaryEmployeeDTO), typeof(MonthlySalaryAction));
         }
 
         private static List<EmployeeDTO> GetDTOs()
@@ -45,8 +45,8 @@ namespace MasGlobal.Tests.Behaviors
             service.Setup(s => s.GetAllAsync())
                 .ReturnsAsync(GetDTOs());
 
-            IFunctorFactory factory = new FunctorFactory();
-            BindBasicFunctors(factory);
+            IActionFactory factory = new ActionFactory();
+            BindBasicActions(factory);
 
             EmployeeBehavior behavior = new EmployeeBehavior(service.Object, factory);
 
@@ -66,8 +66,8 @@ namespace MasGlobal.Tests.Behaviors
             service.Setup(s => s.GetAllAsync())
                 .ReturnsAsync(GetDTOs());
 
-            IFunctorFactory factory = new FunctorFactory();
-            BindBasicFunctors(factory);
+            IActionFactory factory = new ActionFactory();
+            BindBasicActions(factory);
 
             EmployeeBehavior behavior = new EmployeeBehavior(service.Object, factory);
 
@@ -89,8 +89,8 @@ namespace MasGlobal.Tests.Behaviors
             service.Setup(s => s.GetAllAsync())
                 .ReturnsAsync(GetDTOs());
 
-            IFunctorFactory factory = new FunctorFactory();
-            BindBasicFunctors(factory);
+            IActionFactory factory = new ActionFactory();
+            BindBasicActions(factory);
 
             EmployeeBehavior behavior = new EmployeeBehavior(service.Object, factory);
 
@@ -100,14 +100,14 @@ namespace MasGlobal.Tests.Behaviors
         }
 
         [Fact]
-        public async Task GetAllEmployeesWithUnknownFunctor()
+        public async Task GetAllEmployeesWithUnknownAction()
         {
             var service = new Mock<IEmployeeService>();
             service.Setup(s => s.GetAllAsync())
                 .ReturnsAsync(GetFailDTOs());
 
-            IFunctorFactory factory = new FunctorFactory();
-            BindBasicFunctors(factory);
+            IActionFactory factory = new ActionFactory();
+            BindBasicActions(factory);
 
             EmployeeBehavior behavior = new EmployeeBehavior(service.Object, factory);
 
