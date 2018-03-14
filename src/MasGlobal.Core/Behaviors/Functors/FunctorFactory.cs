@@ -7,11 +7,11 @@ namespace MasGlobal.Core.Behaviors.Functors
 {
     public class FunctorFactory : IFunctorFactory
     {
-        private Dictionary<Type, Type> Table;
+        private Dictionary<Type, Type> _table;
 
         public FunctorFactory()
         {
-            Table = new Dictionary<Type, Type>();
+            _table = new Dictionary<Type, Type>();
         }
 
         public void BindFunctor(Type entityType, Type functorType)
@@ -21,29 +21,23 @@ namespace MasGlobal.Core.Behaviors.Functors
                 throw new ArgumentNullException();
             }
 
-            if (Table.ContainsKey(entityType))
+            if (_table.ContainsKey(entityType))
             {
                 throw new Exception("Entity type has an functor assigned");
             }
 
-            Table.Add(entityType, functorType);
+            _table.Add(entityType, functorType);
         }
 
         public IFunctor GetFunctor(object entity)
         {
             var typeofEntity = entity.GetType();
-            if (!Table.ContainsKey(typeofEntity))
+            if (!_table.ContainsKey(typeofEntity))
             {
                 throw new Exception("The entity doesn't have any functor assigned");
             }
 
-            var functorType = Table[typeofEntity];
-            if (functorType.IsGenericType)
-            {
-                Type[] typeArgs = { entity.GetType() };
-                var genericType = functorType.MakeGenericType(typeArgs);
-                return (IFunctor)Activator.CreateInstance(genericType);
-            }
+            var functorType = _table[typeofEntity];
             return (IFunctor)Activator.CreateInstance(functorType);
         }
     }
