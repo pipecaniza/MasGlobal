@@ -5,7 +5,9 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasGlobal", "src\MasGlobal\MasGlobal.csproj", "{F026136F-F09F-4761-82A6-02B2B0BE066D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasGlobal.Core", "src\MasGlobal.Core\MasGlobal.Core.csproj", "{9A7AE125-5DF4-4663-BE1A-56161D122415}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MasGlobal.Core", "src\MasGlobal.Core\MasGlobal.Core.csproj", "{9A7AE125-5DF4-4663-BE1A-56161D122415}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasGlobal.Tests", "test\MasGlobal.Tests\MasGlobal.Tests.csproj", "{F26E36B2-1F9A-4B63-895F-9C2392466D9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{9A7AE125-5DF4-4663-BE1A-56161D122415}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A7AE125-5DF4-4663-BE1A-56161D122415}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A7AE125-5DF4-4663-BE1A-56161D122415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F26E36B2-1F9A-4B63-895F-9C2392466D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F26E36B2-1F9A-4B63-895F-9C2392466D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F26E36B2-1F9A-4B63-895F-9C2392466D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F26E36B2-1F9A-4B63-895F-9C2392466D9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

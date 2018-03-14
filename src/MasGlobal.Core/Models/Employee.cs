@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace MasGlobal.Core.DTOs
+namespace MasGlobal.Core.Models
 {
-    public class EmployeeDTO
+    public class Employee
     {
         public int Id { get; set; }
 
@@ -17,5 +18,9 @@ namespace MasGlobal.Core.DTOs
         public string RoleName { get; set; }
 
         public string RoleDescription { get; set; }
+
+        public int HourlySalary { get; set; }
+
+        public int MonthlySalary { get; set; }
     }
 }
